@@ -1,0 +1,678 @@
+/* -------------------------------------------------
+   Google Fonts
+--------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@300;400;500&display=swap');
+
+/* -------------------------------------------------
+   Root variables
+--------------------------------------------------*/
+:root {
+  /* Brand / Theme */
+  --color-primary: #005f28;   /* Main primary color */
+  --hover-color:   #007A35;   /* Hover color        */
+  --color-light:   #f5f5f5;   /* Light bg / text    */
+  --color-white:   #ffffff;   /* Body background    */
+}
+
+/* -------------------------------------------------
+   Reset & globals
+--------------------------------------------------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {background-color: #f5f5f5;}
+
+/* Disables scrolling */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* -------------------------------------------------
+   Navigation bar
+--------------------------------------------------*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 7.5%;
+  background: var(--color-white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+
+.logo {
+  width: 200px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* --- main nav links ----------------------------------*/
+.navbar a,
+.drop-btn {
+  display: inline-block;
+  margin: 0 20px;
+  text-decoration: none;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar a:hover,
+.drop-btn:hover {
+  color: var(--hover-color);
+  transition: color .4s ease;
+}
+
+/* navbar animation */
+
+.nav-menu a {position: relative; transition: color 0.3s ease;}
+
+/* The underline line */
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+/* Expand the underline on hover */
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+
+/* container for links */
+.nav-menu { display: flex; gap: 1.5rem; }
+
+#menu-toggle { display: none; }        /* hidden on desktop */
+
+/* -------------------------------------------------
+   Dropdown (About → 6 items)
+--------------------------------------------------*/
+.Dropdown { position: relative; }
+
+.dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  background: var(--color-light);
+  min-width: 180px;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+  z-index: 99;
+}
+
+.dropdown-list a {
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+/* Dropdown hidden by default */
+.dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-light);
+  min-width: 180px;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 99;
+}
+
+/* 👇 Show list only if .show class is toggled by JS */
+.Dropdown.show .dropdown-list {
+  display: flex;
+}
+
+
+/* -------------------------------------------------
+   Mobile (≤ 768 px)
+--------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  /* slide‑in side menu */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    padding: 2rem;
+    background: var(--color-light);
+  }
+  .nav-menu.show { display: flex; }
+
+  #menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-primary);
+  }
+
+  /* keep logo centred when menu icon appears */
+  .logo.centered {
+    position: absolute;
+    left: 60%;
+    top: 20px;
+    transform: translate(-50%, -45%);
+    z-index: 101;
+  }
+
+  /* dropdown stacks with indent */
+  .dropdown-list {
+    position: static;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+  .dropdown-list a { padding: .4rem 0 .4rem 1rem; } 
+
+  .frnt-img{padding-top: 50px;}
+
+  .about-title{
+    padding-top: 80px;
+  }
+
+}
+
+/* -------------------------------------------------
+   Full‑screen panels
+--------------------------------------------------*/
+.panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 4vw, 4rem);
+  padding: 2rem;
+  text-align: center;
+}
+#qoute{
+  min-height: 30vh;
+
+}
+#Hero { 
+  background: var(--color-light); 
+
+}
+
+.heading{
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.frnt-img{
+  transform: translateY(-40px); /* Moves it up by 50px */
+  float: right;
+  width: 40%;
+}
+
+.content{
+  padding-top: 150px;
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  text-align: justify;
+}
+.paragraph{
+  font-size: 15px;
+}
+
+#qoute     { background: var(--color-primary); color: var(--color-light); }
+#Academics   { 
+  
+  background: var(--color-white); 
+  min-height: 100vh;
+
+  /* Optional: keep flexbox for horizontal centring, but let items start at the top */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;   /* 🆕 pin content to the top */
+
+}
+/* #Contact  { background:#CCD0CF; color:#06141B; } */
+
+
+/* ---------- Generic button base ---------- */
+
+.btn {
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* button style */
+
+/* Button color variables */
+
+/* Primary (filled) */
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-light);
+  border: 2px solid var(--color-primary);
+}
+
+/* Outline (transparent) */
+.btn--outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+/* When hovering over either button, swap styles */
+.btn-group:hover .btn--primary {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.btn-group:hover .btn--outline {
+  background: var(--color-primary);
+  color: var(--color-light);
+}
+
+
+blockquote{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+blockquote p {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* === Carousel Card === */ 
+
+.about-title {
+	font-size: 7.5rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: -0.02em;
+	position: absolute;
+	top: 130%;
+	left: 50%;
+	transform: translateX(-50%);
+	pointer-events: none;
+	white-space: nowrap;
+	font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+	background: linear-gradient(
+		to bottom,
+		rgba(5, 100, 60, 0.35) 30%,
+		rgb(255 255 255 / 0%) 76%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.carousel-container {
+	width: 100%;
+	max-width: 1200px;
+	height: 450px;
+	position: relative;
+	perspective: 1000px;
+	margin-top: 80px;
+}
+
+.carousel-track {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card {
+	position: absolute;
+	width: 280px;
+	height: 380px;
+	background: white;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+	transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	cursor: pointer;
+}
+
+.card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card.center {
+	z-index: 10;
+	transform: scale(1.1) translateZ(0);
+}
+
+.card.center img {
+	filter: none;
+}
+
+.card.left-2 {
+	z-index: 1;
+	transform: translateX(-400px) scale(0.8) translateZ(-300px);
+	opacity: 0.7;
+}
+
+.card.left-2 img {
+	filter: grayscale(100%);
+}
+
+.card.left-1 {
+	z-index: 5;
+	transform: translateX(-200px) scale(0.9) translateZ(-100px);
+	opacity: 0.9;
+}
+
+.card.left-1 img {
+	filter: grayscale(100%);
+}
+
+.card.right-1 {
+	z-index: 5;
+	transform: translateX(200px) scale(0.9) translateZ(-100px);
+	opacity: 0.9;
+}
+
+.card.right-1 img {
+	filter: grayscale(100%);
+}
+
+.card.right-2 {
+	z-index: 1;
+	transform: translateX(400px) scale(0.8) translateZ(-300px);
+	opacity: 0.7;
+}
+
+.card.right-2 img {
+	filter: grayscale(100%);
+}
+
+.card.hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.member-info {
+	text-align: center;
+	margin-top: 40px;
+	transition: all 0.5s ease-out;
+}
+
+.Strand-Abrveation {
+	color: rgb(3, 73, 20);
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 15px;
+	position: relative;
+	display: inline-block;
+}
+
+.Strand-Abrveation::before,
+.Strand-Abrveation::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	width: 100px;
+	height: 2px;
+	background: rgb(3, 73, 20);
+}
+
+.Strand-Abrveation::before {
+	left: -120px;
+}
+
+.Strand-Abrveation::after {
+	right: -120px;
+}
+
+.Strand-name {
+	color: #848696;
+	font-size: 1.5rem;
+	font-weight: 500;
+	opacity: 0.8;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding: 10px 0;
+	margin-top: -15px;
+	position: relative;
+}
+.dots {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 60px;
+}
+
+.dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: rgba(8, 42, 123, 0.2);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.dot.active {
+	background: rgb(15, 77, 3);
+	transform: scale(1.2);
+}
+
+.nav-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(4, 65, 1, 0.527);
+	color: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 20;
+	transition: all 0.3s ease;
+	font-size: 1.5rem;
+	border: none;
+	outline: none;
+	padding-bottom: 4px;
+}
+
+.nav-arrow:hover {
+	background: rgba(4, 105, 9, 0.8);
+	transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow.left {
+	left: 20px;
+	padding-right: 3px;
+}
+
+.nav-arrow.right {
+	right: 20px;
+	padding-left: 3px;
+}
+
+@media (max-width: 768px) {
+	.about-title {
+		font-size: 4.5rem;
+	}
+
+	.card {
+		width: 200px;
+		height: 280px;
+	}
+
+	.card.left-2 {
+		transform: translateX(-250px) scale(0.8) translateZ(-300px);
+	}
+
+	.card.left-1 {
+		transform: translateX(-120px) scale(0.9) translateZ(-100px);
+	}
+
+	.card.right-1 {
+		transform: translateX(120px) scale(0.9) translateZ(-100px);
+	}
+
+	.card.right-2 {
+		transform: translateX(250px) scale(0.8) translateZ(-300px);
+	}
+
+	.Strand-Abrveation {
+		font-size: 2rem;
+	}
+
+	.Strand-name {
+		font-size: 1.2rem;
+	}
+
+	.Strand-Abrveation::before,
+	.Strand-Abrveation::after {
+		width: 50px;
+	}
+
+	.Strand-Abrveation::before {
+		left: -70px;
+	}
+
+	.Strand-Abrveation::after {
+		right: -70px;
+	}
+}
+
+/*=== JHS ===*/
+
+.grades-section {
+  padding: 50px 20px;
+  background-color: var(--color-light);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.grades-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.grade-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.grade-card h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.grade-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.grade-card ul {
+  padding-left: 20px;
+  margin-top: 10px;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.grade-card li {
+  margin-bottom: 5px;
+}
+
+
+/*==== Footer ===*/
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.footer {
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* -------------------------------------------------
+   Back‑to‑top button
+--------------------------------------------------*/
+.to‑top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-primary);
+  color: var(--color-light);
+  border-radius: 50%;
+  font-size: 1.25rem;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+.to‑top:hover { background: var(--hover-color); }

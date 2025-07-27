@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>login page</title>
+        <link rel="website icon" href="../Images/mnhs-logo-trans.png" type="png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="../CSS/login.css">
+    </head>
+<body>
+    <div class="container-nav">
+    <header class="navbar">
+        <img src="../Images/MUNTINLUPA NATIONAL HIGHSCHOOL-MAIN-white.png" class="logo" id="logo" alt="MNHS Logo">
+    </header>
+
+    <!--===back button===-->
+    <a href="index.html" id="back-button" aria-label="Back to home">⟵ Home</a>
+
+   <div class="container">
+    <div class="header">
+        <h1>MNHS Login Page</h1>
+        <p>Fill out this Form to login</p>
+    </div>
+        <!--===Login Field====-->
+    <form class="login-form">
+
+        <label for="student-number">Student Number</label>
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+        <input type="text" name="student-number" id="student-number-field" required >
+        </div>
+
+        
+        <label for="pin-number">Pin Number</label>
+        <div class="input-group">
+            <i class="fa-solid fa-key"></i>
+        <input type="password" name="pin-number" id="pin-number-field" required >
+        </div>
+
+
+        <button type="submit">Sign in</button>
+    </form>
+    
+    <div class="help-text">
+    <p >
+        If you forgot your PIN or need an assistance to activate your account, please email us at <a href="">support@mnhs.edu.ph</a> using your official IE account. We will only entertain messages coming from Mnhs official IE.
+    </p>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+/* -------------------------------------------------
+   Google Fonts
+--------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@300;400;500&display=swap');
+
+/* -------------------------------------------------
+   Root variables
+--------------------------------------------------*/
+:root {
+  /* Brand / Theme */
+  --color-primary: #005f28;   /* Main primary color */
+  --hover-color:   #007A35;   /* Hover color        */
+  --color-light:   #f5f5f5;   /* Light bg / text    */
+  --color-white:   #ffffff;   /* Body background    */
+}
+
+/* -------------------------------------------------
+   Reset & globals
+--------------------------------------------------*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {background-color: #f5f5f5;}
+
+/* -------------------------------------------------
+   Navigation bar
+--------------------------------------------------*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 7.5%;
+  background: var(--color-white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+
+.logo {
+  width: 200px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* --- main nav links ----------------------------------*/
+.navbar a,
+.drop-btn {
+  display: inline-block;
+  margin: 0 20px;
+  text-decoration: none;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar a:hover,
+.drop-btn:hover {
+  color: var(--hover-color);
+  transition: color .4s ease;
+}
+
+/* navbar animation */
+
+.nav-menu a {position: relative; transition: color 0.3s ease;}
+
+/* The underline line */
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--hover-color);
+  transition: width 0.3s ease;
+}
+
+/* Expand the underline on hover */
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+
+/* container for links */
+.nav-menu { display: flex; gap: 1.5rem; }
+
+#menu-toggle { display: none; }        /* hidden on desktop */
+
+/* -------------------------------------------------
+   Dropdown (About → 6 items)
+--------------------------------------------------*/
+.Dropdown { position: relative; }
+
+.dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  background: var(--color-light);
+  min-width: 180px;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+  z-index: 99;
+}
+
+.dropdown-list a {
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+/* Dropdown hidden by default */
+.dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-light);
+  min-width: 180px;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 99;
+}
+
+/* 👇 Show list only if .show class is toggled by JS */
+.Dropdown.show .dropdown-list {
+  display: flex;
+}
+
+
+/* -------------------------------------------------
+   Mobile (≤ 768 px)
+--------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  /* slide‑in side menu */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    padding: 2rem;
+    background: var(--color-light);
+  }
+  .nav-menu.show { display: flex; }
+
+  #menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-primary);
+  }
+
+  /* keep logo centred when menu icon appears */
+  .logo.centered {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translate(-50%, -45%);
+    z-index: 101;
+  }
+
+  /* dropdown stacks with indent */
+  .dropdown-list {
+    position: static;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+  .dropdown-list a { padding: .4rem 0 .4rem 1rem; }
+}
+
+/* -------------------------------------------------
+   Full‑screen panels
+--------------------------------------------------*/
+.panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 4vw, 4rem);
+  padding: 2rem;
+  text-align: center;
+}
+
+#Hero { 
+  background: var(--color-light); 
+
+}
+
+
+#qoute     { background: var(--color-primary); color: var(--color-light); }
+#Academics   { background: var(--color-white); }
+#Admissions  { background: #4A5C6A; color: var(--color-light); }
+#Events      { background: #9BA8AB; color: #06141B; }
+/* #Contact  { background:#CCD0CF; color:#06141B; } */
+
+/* -------------------------------------------------
+   Back‑to‑top button
+--------------------------------------------------*/
+.to‑top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-primary);
+  color: var(--color-light);
+  border-radius: 50%;
+  font-size: 1.25rem;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+.to‑top:hover { background: var(--hover-color); }
+
